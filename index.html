@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classic Duck Hunting Game</title>
+    <style>
+        *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background:url("bg.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position:center ;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  
+}
+.container{
+    position: relative;
+}
+
+.cursor, .blood{
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    z-index: 3;
+    transform: translate(-50%,-50%);
+    pointer-events: none;
+}
+.blood{
+    z-index: 1;
+}
+
+button{
+    border-radius: 20px;
+    font-size:35px ;
+    padding: 20px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%,150%);
+    z-index: 1  ;
+}
+
+.duck{ 
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%,150%);
+    z-index: 2  ;
+    transition: all 1s;
+}
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <button type="button">Start Game</button>
+        <img src="target.png" alt="" class='cursor'>
+      <img src="duck.gif" alt="" class='duck'> 
+        <img src="blood.png" alt="" class='blood'>
+    </div>
+
+
+    <audio class="shot" src="shot.mp3"></audio>
+ 
+
+    
+</body>
+<script>
+    cursor = document.querySelector('.cursor')
+blood = document.querySelector('.blood')
+duck = document.querySelector('.duck')
+body = document.querySelector('body')
+button = document.querySelector('button')
+ shot = document.querySelector(".shot");
+ 
+
+score = 0;
+screenWidth = body.offsetWidth;
+screenHeight = body.offsetHeight;
+ 
+
+
+button.addEventListener('click',function(){
+
+    window.addEventListener('mousemove',function(e){
+        cursor.style.left = e.pageX + "px";
+        cursor.style.top = e.pageY + "px"; 
+        console.log(e.target.classList)
+      
+    })
+
+    window.addEventListener('click',function(e){
+        
+        shot.play();
+     
+        if(e.target.classList.contains("duck")){
+            blood.style.display = 'block'
+            blood.style.left = e.pageX + "px";
+            blood.style.top = e.pageY + "px";
+            this.setTimeout(function(){
+                blood.style.display = 'none'
+            },500)
+            score++
+            button.innerHTML = "Score "+score
+            shot.play();
+            
+        }
+    }) 
+
+    setInterval(function(){
+        randTop = Math.random() * (screenHeight - 150);
+        randleft = Math.random() * (screenWidth - 150);
+        duck.style.left = randleft + "px"
+        duck.style.top = (randTop) + "px" 
+
+        },1000)
+})
+</script>
+</html>
