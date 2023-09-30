@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stone Paper Scissor</title>
+    <style>
+        * {
+            margin: 1px;
+            padding: 2px;
+        }
+
+        .head {
+            background-color: rgb(255, 63, 63);
+            padding: 11px;
+            width: 98%;
+            color: white;
+
+        }
+
+        body {
+            background-color: antiquewhite;
+        }
+
+        .container {
+
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        h2 {
+            margin-inline: 33px;
+            cursor: progress;
+        }
+
+        .result {
+            display: flex;
+            justify-content: center;
+        }
+
+        .game {
+
+            text-align: center;
+        }
+
+        span {
+            display: flex;
+            justify-content: center;
+
+
+
+        }
+
+        img {
+            width: 60px;
+            cursor: pointer;
+
+        }
+        
+    </style>
+
+</head>
+
+
+<body>
+    <div class="container">
+        <div class="head">
+            <h1>Rock Paper Scissor Game</h1>
+        </div>
+        <div class="result">
+
+            <div>
+                <h2>My Score : </h2>
+                <h2 id="myscore">0</h2>
+            </div>
+
+            <div>
+                <h2>Computer Score : </h2>
+                <h2 id="comScore">0</h2>
+            </div>
+        </div>
+
+        <div class="game">
+            <div>
+                <h2>Computer : </h2>
+                <img id="comp" alt="">
+            </div>
+            <div>
+                <h2>User : </h2>
+                <img id="user" alt="">
+            </div>
+        </div>
+        <br>
+
+        <span>
+            <h2>Result : <h2 id="result"></h2>
+            </h2>
+
+        </span>
+        <div class="img">
+            <img onclick="myFun1()" src="rock.png" alt="">
+            <img onclick="myFun2()" src="paper.png" alt="">
+            <img onclick="myFun3()" src="scissor.png" alt="">
+
+        </div>
+
+    </div>
+
+    <script>
+        // let a = Math.random();
+        // let b = a * 3;
+        // let c = Math.floor(b);
+        // console.log(c);
+
+        function myFun1() {
+            let a = Math.random();
+            let b = a * 3;
+            let c = Math.floor(b);
+            console.log(c);
+
+            let rock = (document.getElementById("user").src = "rock.png");
+            if (c == 0) {
+                let rock = (document.getElementById("comp").src = "rock.png");
+                if (rock && rock) {
+                    let result = (document.getElementById("result").innerHTML = "Draw");
+                }
+            } else if (c == 1) {
+                let paper = (document.getElementById("comp").src = "paper.png");
+                if (rock && paper) {
+                    let result = (document.getElementById("result").innerHTML = "User You Lost");
+                    let score = document.querySelector("#comScore").innerHTML;
+                    score++;
+                    document.querySelector("#comScore").innerHTML = score;
+                }
+            } else if (c == 2) {
+                let scissor = (document.getElementById("comp").src = "scissor.png");
+                if (rock && scissor) {
+                    let result = (document.getElementById("result").innerHTML = "You Win");
+                    let score = document.querySelector("#myscore").innerHTML;
+                    score++;
+                    document.querySelector("#myscore").innerHTML = score;
+                }
+            }
+        }
+
+
+        function myFun2() {
+            let a = Math.random();
+            let b = a * 3;
+            let c = Math.floor(b);
+            console.log(c);
+
+
+            let paper = (document.getElementById("user").src = "paper.png");
+
+            if (c == 0) {
+                let rock = (document.getElementById("comp").src = "rock.png");
+                if (rock && paper) {
+                    let result = (document.getElementById("result").innerHTML = "You Win");
+                    let score = document.querySelector("#myscore").innerHTML;
+                    score++;
+                    document.querySelector("#myscore").innerHTML = score;
+                }
+            } else if (c == 1) {
+                let paper = (document.getElementById("comp").src = "paper.png");
+                if (paper && paper) {
+                    let result = (document.getElementById("result").innerHTML = "Draw");
+                }
+            } else if (c == 2) {
+                let scissor = (document.getElementById("comp").src = "scissor.png");
+                if (paper && scissor) {
+                    let result = (document.getElementById("result").innerHTML = "You Lost");
+                    let score = document.querySelector("#comScore").innerHTML;
+                    score++;
+                    document.querySelector("#comScore").innerHTML = score;
+                }
+            }
+        }
+
+
+        function myFun3() {
+            let a = Math.random();
+            let b = a * 3;
+            let c = Math.floor(b);
+            console.log(c);
+
+            let scissor = (document.getElementById("user").src = "scissor.png");
+
+            if (c == 0) {
+                let rock = (document.getElementById("comp").src = "rock.png");
+                if (scissor && rock) {
+                    let result = (document.getElementById("result").innerHTML = "You Lost");
+                    let score = document.querySelector("#comScore").innerHTML;
+                    score++;
+                    document.querySelector("#comScore").innerHTML = score;
+                }
+            } else if (c == 1) {
+                let paper = (document.getElementById("comp").src = "paper.png");
+                if (scissor && paper) {
+                    let result = (document.getElementById("result").innerText = "You Win");
+                    let score = document.querySelector("#myscore").innerHTML;
+                    score++;
+                    document.querySelector("#myscore").innerHTML = score;
+                }
+            } else if (c == 2) {
+                let scissor = (document.getElementById("comp").src = "scissor.png");
+                if (scissor && scissor) {
+                    let result = (document.getElementById("result").innerHTML = "Draw");
+                }
+            }
+        }
+
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>
